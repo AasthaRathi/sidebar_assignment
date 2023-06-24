@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Left Panel Navigation</title>
+    <style>
+      body {
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      #left-panel {
+        width: 200px;
+        height: 100vh;
+        background-color: #f1f1f1;
+      }
+
+      #content {
+        flex-grow: 1;
+        padding: 20px;
+      }
+
+      /* Styling for the navigation links */
+      .nav-link {
+        display: block;
+        padding: 10px;
+        color: #333;
+        text-decoration: none;
+      }
+
+      .nav-link:hover {
+        background-color: #ddd;
+      }
+
+      /* CSS classes to show/hide content */
+      .active {
+        display: block;
+      }
+
+      .inactive {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="left-panel">
+      <a class="nav-link" href="#" onclick="showContent('home')">Home</a>
+      <a class="nav-link" href="#" onclick="showContent('contact')">Contact</a>
+      <a class="nav-link" href="#" onclick="showContent('information')"
+        >Information</a
+      >
+      <a class="nav-link" href="#" onclick="showContent('guide')">Guide</a>
+    </div>
+
+    <div id="content">
+      <div id="home" class="active">
+        <h2>Welcome to the Home Page</h2>
+        <p>This is the content for the Home page.</p>
+      </div>
+
+      <div id="contact" class="inactive">
+        <h2>Contact Information</h2>
+        <p>This is the content for the Contact page.</p>
+      </div>
+
+      <div id="information" class="inactive">
+        <h2>Information Page</h2>
+        <p>This is the content for the Information page.</p>
+      </div>
+
+      <div id="guide" class="inactive">
+        <h2>Guide Page</h2>
+        <p>This is the content for the Guide page.</p>
+      </div>
+    </div>
+
+    <script>
+      function showContent(contentId) {
+        // Hide all content divs
+        var contentDivs = document.querySelectorAll("#content > div");
+        for (var i = 0; i < contentDivs.length; i++) {
+          contentDivs[i].classList.remove("active");
+          contentDivs[i].classList.add("inactive");
+        }
+
+        // Show the selected content div
+        var selectedDiv = document.getElementById(contentId);
+        selectedDiv.classList.remove("inactive");
+        selectedDiv.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
